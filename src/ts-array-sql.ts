@@ -42,9 +42,9 @@ export class ArraySQL {
     }
 
     static from<S extends Soruce>(soruce: S) {
-        const table = new SQLTable(soruce);
-        const newList = table.toList();
-        const result = new TmpResult([table], newList);
+        const newTable = new SQLTable(soruce);
+        const newList = newTable.toList();
+        const result = new TmpResult([newTable], newList);
         return new SQLBuilder(result);
     }
 }
@@ -59,10 +59,10 @@ export class SQLBuilder<T> {
 
         return {
             on: (onFn: (item: T & { [K in keyof S]: Item<S> }) => boolean) => {
-                const table = new SQLTable(newSoruce);
+                const newTable = new SQLTable(newSoruce);
                 const newList: (T & { [K in keyof S]: Item<S> })[] = [];
                 let listA: Array<any> = this.result.list;
-                let listB: Array<any> = newSoruce[table.alias].map(val => ({ [table.alias]: val }));
+                let listB: Array<any> = newTable.toList();
 
                 if (joinMode === JoinMode.RIGHT) {
                     const tmpList = listA;
@@ -84,7 +84,7 @@ export class SQLBuilder<T> {
                     }, newList);
 
                     if (oldLen === newList.length && joinMode === JoinMode.LEFT) {
-                        const nullItem = { [table.alias]: {} };
+                        const nullItem = { [newTable.alias]: {} };
                         newList.push({ ...itemA, ...nullItem });
 
                     } else if (oldLen === newList.length && joinMode === JoinMode.RIGHT) {
@@ -98,7 +98,7 @@ export class SQLBuilder<T> {
                     }
                 });
 
-                const newResult = new TmpResult([...this.result.tables, table], newList);
+                const newResult = new TmpResult([...this.result.tables, newTable], newList);
                 return new SQLBuilder(newResult);
             }
         }
