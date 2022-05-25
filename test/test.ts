@@ -77,7 +77,7 @@ console.log(test6);
 
 
 /*
-  SELECT a.name, SUM(Price) sum_price
+  SELECT a.name, SUM(b.price) sum_price
   FROM customers a
   LEFT JOIN orders b ON a.c_id=b.c_id
   GROUP BY a.c_id
