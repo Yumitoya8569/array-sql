@@ -16,12 +16,23 @@ import { ArraySQL, SortDir } from '@yumitoya8569/ts-array-sql';
 ```typescript
 import { ArraySQL, SortDir } from '@yumitoya8569/ts-array-sql';
 
-const customers: { c_id: string, name: string, city: string, address: string, phone: string, salary: number }[] = [
-    /* your data here */
-];
-const orders: { o_id: string, order_no: string, c_id: string, price: number }[] = [
-    /* your data here */
-];
+export type Customer = {
+    c_id: string,
+    name: string,
+    city: string,
+    address: string,
+    phone: string,
+    salary: number
+};
+export type Order = {
+    o_id: string,
+    order_no: string,
+    c_id: string,
+    price: number
+};
+
+const customers: Customer[] = [ /* your data here */];
+const orders: Order[] = [/* your data here */];
 ```
 ```sql
   SELECT a.name, SUM(b.price) sum_price
