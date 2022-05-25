@@ -1,5 +1,5 @@
 {
-  "name": "@toya/ts-array-sql",
+  "name": "@yumitoya8569/ts-array-sql",
   "version": "1.0.0",
   "description": "Manipulate typescript array with SQL-like syntax",
   "main": "index.ts",
@@ -20,7 +20,7 @@
   "homepage": "https://github.com/Yumitoya8569/ts-array-sql",
   "repository": {
     "type": "git",
-    "url": "git@github.com:Yumitoya8569/ts-array-sql.git"
+    "url": "git+ssh://git@github.com/Yumitoya8569/ts-array-sql.git"
   },
   "bugs": {
     "url": "https://github.com/Yumitoya8569/ts-array-sql/issues"
@@ -31,5 +31,8 @@
     "ts-node": "^10.4.0",
     "@types/node": "^16.11.11",
     "typescript": "^4.5.2"
+  },
+  "directories": {
+    "test": "test"
   }
 }
