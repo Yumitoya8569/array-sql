@@ -1,4 +1,5 @@
-# ng-conditional-validator
+# ts-array-sql
+
 Manipulate typescript arrays with SQL-like syntax
 
 ### Install
