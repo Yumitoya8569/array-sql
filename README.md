@@ -13,6 +13,7 @@ import { ArraySQL, SortDir } from '@yumitoya8569/ts-array-sql';
 
 ## Example
 
+### Init table
 ```typescript
 import { ArraySQL, SortDir } from '@yumitoya8569/ts-array-sql';
 
@@ -34,6 +35,8 @@ export type Order = {
 const customers: Customer[] = [ /* your data here */];
 const orders: Order[] = [/* your data here */];
 ```
+
+### With SQL
 ```sql
   SELECT a.name, SUM(b.price) sum_price
   FROM customers a
@@ -43,6 +46,7 @@ const orders: Order[] = [/* your data here */];
   ORDER BY a.c_id ASC
 ```
 
+### With ArraySQL
 ```typescript
 const result = ArraySQL
     .from({ a: customers })
