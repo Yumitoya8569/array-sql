@@ -1,5 +1,7 @@
-# ts-array-sql
+# Typescript Array SQL
 Help you manipulate typescript arrays with SQL-like syntax and completely type support
+
+## Quickstart
 
 ### Install
 ```
