@@ -24,7 +24,11 @@ export interface OrderBuilder<T> extends SelectBuilder<T> {
 }
 
 export interface GroupBuilder<T> extends OrderBuilder<T>, SelectBuilder<T> {
-    groupBy(getDataFn: (item: T) => any[]): OrderBuilder<T>
+    groupBy(getDataFn: (item: T) => any[]): HavingBuilder<T>
+}
+
+export interface HavingBuilder<T> extends OrderBuilder<T>, SelectBuilder<T> {
+    having(havingFn: (group: SQLGroup<T>) => boolean): OrderBuilder<T>
 }
 
 export class ArraySQL {
@@ -39,7 +43,8 @@ export class ArraySQL {
 
     static from<S extends Soruce>(soruce: S) {
         const table = new SQLTable(soruce);
-        const result = new TmpResult([table], table.toList());
+        const newList = table.toList();
+        const result = new TmpResult([table], newList);
         return new SQLBuilder(result);
     }
 }
@@ -108,8 +113,8 @@ export class SQLBuilder<T> {
     }
 
     where(whereFn: (item: T) => boolean) {
-        const list = this.result.list.filter((item) => whereFn(item));
-        const newResult = new TmpResult([...this.result.tables], list);
+        const newList = this.result.list.filter((item) => whereFn(item));
+        const newResult = new TmpResult(this.result.tables, newList);
         return new SQLBuilder(newResult) as GroupBuilder<T>;
     }
 
@@ -124,7 +129,13 @@ export class SQLBuilder<T> {
         });
 
         const newGroupList = Array.from(map, ([key, val]) => val);
-        const newResult = new TmpResult([...this.result.tables], this.result.list, newGroupList);
+        const newResult = new TmpResult(this.result.tables, this.result.list, newGroupList);
+        return new SQLBuilder(newResult) as HavingBuilder<T>;
+    }
+
+    having(havingFn: (group: SQLGroup<T>) => boolean) {
+        const newGroupList = this.result.groupList?.filter((g) => havingFn(g));
+        const newResult = new TmpResult(this.result.tables, this.result.list, newGroupList);
         return new SQLBuilder(newResult) as OrderBuilder<T>;
     }
 
