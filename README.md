@@ -1,5 +1,5 @@
 # Typescript Array SQL
-Help you manipulate typescript arrays with SQL-like syntax and completely type support
+Typescript library help you manipulate array with SQL-like syntax (completely type support)
 
 ## Quickstart
 

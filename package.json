@@ -1,7 +1,7 @@
 {
   "name": "@yumitoya8569/ts-array-sql",
   "version": "1.0.1",
-  "description": "Manipulate typescript array with SQL-like syntax",
+  "description": "Typescript library help you manipulate array with SQL-like syntax (completely type support)",
   "main": "index.ts",
   "scripts": {
     "build": "tsc",
