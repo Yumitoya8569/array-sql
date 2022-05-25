@@ -1,1 +1,1 @@
- export * from './src/ts-array-sql'
+export * from './src/ts-array-sql';

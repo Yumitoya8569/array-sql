@@ -18,7 +18,7 @@ export type Employee = {
     e_id: string,
     name: string,
     title: string
-}
+};
 
 export const customers: Customer[] = [
     {

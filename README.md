@@ -11,21 +11,17 @@ npm i "@yumitoya8569/ts-array-sql"
 import { ArraySQL, SortDir } from '@yumitoya8569/ts-array-sql';
 ```
 
-### Example
-```typescript
-import { ArraySQL, SortDir } from '@yumitoya8569/ts-array-sql';
-
-const customers: Customer[] = [/* your data here */];
-const orders: Order[] = [/* your data here */];
-
-/* 
+## Example
+```sql
   SELECT a.name, SUM(b.price) sum_price
   FROM customers a
   LEFT JOIN orders b
   ON a.c_id=b.c_id
   GROUP BY a.c_id
   ORDER BY a.c_id ASC
-*/
+```
+
+```typescript
 
 const result = ArraySQL
   .from({ a: customers })
@@ -34,8 +30,7 @@ const result = ArraySQL
   .groupBy(({ a }) => [a.c_id])
   .orderBy(({ a }) => [a.c_id], [SortDir.ASC])
   .select(({ a }, gp) => ({
-    name: a.name,
-    sum_price: gp?.sum(({ b }) => b.price)
+      name: a.name,
+      sum_price: gp?.sum(({ b }) => b.price)
   }));
-
 ```
