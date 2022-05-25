@@ -15,7 +15,7 @@ import { ArraySQL, SortDir } from '@yumitoya8569/ts-array-sql';
 
 ## Example
 
-### Init table
+### Init Table
 ```typescript
 import { ArraySQL, SortDir } from '@yumitoya8569/ts-array-sql';
 
