@@ -19,7 +19,7 @@ import { ArraySQL, SortDir } from '@yumitoya8569/ts-array-sql';
 ```typescript
 import { ArraySQL, SortDir } from '@yumitoya8569/ts-array-sql';
 
-export type Customer = {
+type Customer = {
     c_id: string,
     name: string,
     city: string,
@@ -27,7 +27,7 @@ export type Customer = {
     phone: string,
     salary: number
 };
-export type Order = {
+type Order = {
     o_id: string,
     order_no: string,
     c_id: string,
