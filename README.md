@@ -1,6 +1,5 @@
 # ts-array-sql
-
-Manipulate typescript arrays with SQL-like syntax
+Help you manipulate typescript arrays with SQL-like syntax and completely type support
 
 ### Install
 ```
