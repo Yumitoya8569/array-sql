@@ -4,7 +4,7 @@ Manipulate typescript arrays with SQL-like syntax
 
 ### Install
 ```
-npm i @yumitoya8569/ts-array-sql
+npm i "@yumitoya8569/ts-array-sql"
 ```
 
 ### Import
