@@ -14,6 +14,7 @@ import { ArraySQL, SortDir } from '@toya/ts-array-sql';
 
 ## Example
 ```typescript
+import { ArraySQL, SortDir } from '@toya/ts-array-sql';
 /*
   SELECT a.name, SUM(Price) sum_price
   FROM customers a
