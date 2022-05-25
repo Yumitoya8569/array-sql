@@ -15,7 +15,11 @@ import { ArraySQL, SortDir } from '@toya/ts-array-sql';
 ## Example
 ```typescript
 import { ArraySQL, SortDir } from '@toya/ts-array-sql';
-/*
+
+const customers: Customer[] = [/* your data here */];
+const orders: Order[] = [/* your data here */];
+
+/* 
   SELECT a.name, SUM(Price) sum_price
   FROM customers a
   LEFT JOIN orders b ON a.c_id=b.c_id
@@ -32,4 +36,5 @@ const result = ArraySQL
     name: a.name,
     sum_price: gp?.sum(({ b }) => b.price)
   }));
+
 ```
