@@ -255,7 +255,7 @@ export class SQLTable<S extends Soruce, I extends Item<S>> {
     }
 
     toList() {
-        return this.source[this.alias].map(i => ({ [this.alias]: { ...i } } as { [K in keyof S]: I }));
+        return this.source[this.alias].map(i => ({ [this.alias]: i } as { [K in keyof S]: I }));
     }
 }
 
